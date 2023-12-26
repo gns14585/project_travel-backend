@@ -44,6 +44,13 @@ public class SmsUtil {
     // ---------- 문자 발송 로직 ----------
     @PostMapping("sendSMS")
     public ResponseEntity<String> sendOne(@RequestBody Member member) {
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         if (messageService == null) {
             throw new IllegalStateException("초기화되었는지 확인");
         }
